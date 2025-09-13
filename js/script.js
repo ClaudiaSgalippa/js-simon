@@ -16,25 +16,43 @@ Consigli del giorno:
 - Individuate gli elementi di cui avete bisogno per realizzare il programma.
 - Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array" */
 
+//-- PRENDIAMO GLI ELEMENTI DA HTML E GENERIAMO DELLE COSTANTI --//
+
+const countdown = document.getElementById("countdown");
+const numberList = document.getElementById("numbers-list");
+const answerForm = document.getElementById("answers-form");
+const input = document.querySelectorAll("#input-group input");
+const message = document.getElementById("message");
+
 //-- GENERIAMO UN NUMERO RANDOM --//
 
-function numeroCasuale (min, max) {
+function randomNumber (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+console.log(randomNumber(0,50));
 
-const numRandom = numeroCasuale (1, 99);
-console.log(numRandom);
+//-- CREIAMO UNA FUNZIONE CHE GENERI UN ARRAY DOVE INSERIRE I NUMERI RANDOM --//
 
-//-- CREIAMO UN ARRAY DOVE INSERIRE I NUMERI RANDOM --//
+function randomNumberArray (min, max, numX) {
+    let numRandomArray = [];
 
-let numRandomArray = [];
+    for (let i = 0; i < numX; i++) {
+        let newArray = numRandomArray (min, max);
 
-for (let i = 0; i < numRandomArray.length; i++) {
-    let numRandom = Math.floor(Math.random() * 99) + 1;
-    numRandomArray.push(numRandom);
+        if (numRandomArray.includes(newArray)) {
+            continue
+    
+        }   else {
+                numRandomArray.push(newArray);
+        }
+    }
+    return numRandomArray;
+
 }
 
-console.log(numRandomArray);
+
+
+
 
 
 /*  1 - VISUALIZZARE IN PAGINA 5 NUMERI CASUALI:
