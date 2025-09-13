@@ -20,7 +20,7 @@ Consigli del giorno:
 //-- PRENDIAMO GLI ELEMENTI DA HTML E GENERIAMO DELLE COSTANTI --//
 
 const countdown = document.getElementById("countdown");
-//const numberList = document.getElementById("numbers-list");
+const listLi = document.getElementById("numbers-list");
 const answerForm = document.getElementById("answers-form");
 const input = document.querySelectorAll("#input-group input");
 const message = document.getElementById("message");
@@ -66,7 +66,6 @@ for (let i = 0; i < numberList.length; i++) {
     numberList[i].innerText = number;
 }
 
-
 //-- CREAZIONE DEL COUNTDOWN --//
 
 let seconds = 30;
@@ -75,7 +74,7 @@ countdown.innerText = seconds--;
 const interval = setInterval(function() {
     if (seconds === 0) {
         clearInterval(interval);
-        numberList.classList.add("d-none");
+        listLi.classList.add("d-none");
         answerForm.classList.remove("d-none");
 
     } else {
@@ -84,23 +83,30 @@ const interval = setInterval(function() {
 }, 1000);
 
 
+//-- INPUT FORM --//
 
+answerForm.addEventListener("submit", function(event) {
+    event.preventDefault(); 
 
+    const inputNumbers = [];
+    for (let i = 0; i < input.length; i++) {
+        const numbersX = Number(inputNumbers[i].value);
+        inputNumbers.push(numbersX);
+    }
 
+    const numbersTrue = [];
+    for (let i = 0; i < inputNumbers.length; i++) {
+        const thatNumber = inputNumbers[i];
 
-/*  1 - VISUALIZZARE IN PAGINA 5 NUMERI CASUALI:
-        - creare una funzione che generi (5) numeri casuali
-        - inseriamo i numeri in un array
-        - assegnarla all'interno degli <li> presenti nell'html       
+        if (genNumber.includes(thatNumber)
+        && !numbersTrue(thatNumber)) {
+        numbersTrue.push(thatNumber);
+        }
+    }
 
-    2 - DA Lì PARTE UN TIMER DI 30 SECONDI:
-        - creare un countdown per 30 secondi 
-
-    3 - DOPO 30 SECONDI I NUMERI SCOMPAIONO E APPAIONO INVECE 5 INPUT IN CUI L'UTENTE DEVE INSERIRE I NUMERI CHE HA VISTO PRECEDENTEMENTE, NELL'ORDINE CHE PREFERISCE
-        - display.none del timer (?) 
-        - display.block dei form per l'inserimento delle cifre (input)
-
-    4 - DOPO CHE SONO STATI INSERITI I 5 NUMERI, IL SOFTWARE DICE QUANTI E QUALI NUMERI DA INDOVINARE SONO STATI INDIVIDUATI
-        - creare un array con i numeri inseriti
-        - creare una funzione che paragona i numeri generati casualmente con quelli inseriti (Array)
-        - stampa del risultato in pagina di quanti e quali numeri */
+    if (numbersTrue.length > 0) {
+        message.innerText = `Hai indovinato ${numbersTrue.length} numeri, ovvero ${numbersTrue.join}`;
+    } else {
+        message.innerText = `Mi dispiace, non hai indovinato nessun numero`;
+    }
+})
