@@ -15,3 +15,41 @@ Consigli del giorno:
 - Dividete in piccoli problemi la consegna.
 - Individuate gli elementi di cui avete bisogno per realizzare il programma.
 - Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array" */
+
+//-- GENERIAMO UN NUMERO RANDOM --//
+
+function numeroCasuale (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const numRandom = numeroCasuale (1, 99);
+console.log(numRandom);
+
+//-- CREIAMO UN ARRAY DOVE INSERIRE I NUMERI RANDOM --//
+
+let numRandomArray = [];
+
+for (let i = 0; i < numRandomArray.length; i++) {
+    let numRandom = Math.floor(Math.random() * 99) + 1;
+    numRandomArray.push(numRandom);
+}
+
+console.log(numRandomArray);
+
+
+/*  1 - VISUALIZZARE IN PAGINA 5 NUMERI CASUALI:
+        - creare una funzione che generi (5) numeri casuali
+        - inseriamo i numeri in un array
+        - assegnarla all'interno degli <li> presenti nell'html       
+
+    2 - DA Lì PARTE UN TIMER DI 30 SECONDI:
+        - impostare setInterval per 30 secondi
+
+    3 - DOPO 30 SECONDI I NUMERI SCOMPAIONO E APPAIONO INVECE 5 INPUT IN CUI L'UTENTE DEVE INSERIRE I NUMERI CHE HA VISTO PRECEDENTEMENTE, NELL'ORDINE CHE PREFERISCE
+        - display.none del timer (?) 
+        - display.block dei form per l'inserimento delle cifre (input)
+
+    4 - DOPO CHE SONO STATI INSERITI I 5 NUMERI, IL SOFTWARE DICE QUANTI E QUALI NUMERI DA INDOVINARE SONO STATI INDIVIDUATI
+        - creare un array con i numeri inseriti
+        - creare una funzione che paragona i numeri generati casualmente con quelli inseriti (Array)
+        - stampa del risultato in pagina di quanti e quali numeri */
