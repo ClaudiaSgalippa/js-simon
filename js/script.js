@@ -16,13 +16,16 @@ Consigli del giorno:
 - Individuate gli elementi di cui avete bisogno per realizzare il programma.
 - Immaginate la logica come fosse uno snack: "Dati 2 array di numeri, indica quali e quanti numeri ci sono in comune tra i due array" */
 
+
 //-- PRENDIAMO GLI ELEMENTI DA HTML E GENERIAMO DELLE COSTANTI --//
 
 const countdown = document.getElementById("countdown");
-const numberList = document.getElementById("numbers-list");
+//const numberList = document.getElementById("numbers-list");
 const answerForm = document.getElementById("answers-form");
 const input = document.querySelectorAll("#input-group input");
 const message = document.getElementById("message");
+const numberList = document.querySelectorAll("li");
+
 
 //-- GENERIAMO UN NUMERO RANDOM --//
 
@@ -30,6 +33,7 @@ function randomNumber (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 console.log(randomNumber(0,50));
+
 
 //-- CREIAMO UNA FUNZIONE CHE GENERI UN ARRAY DOVE INSERIRE I NUMERI RANDOM --//
 
@@ -50,6 +54,29 @@ function randomNumberArray (min, max, numX) {
 
 }
 console.log(randomNumber(1, 50, 5))
+
+
+//-- CREIAMO UNA FUNZIONE PER INSERIRE I NUMERI RANDOM IN HTML --//
+
+let genNumber = [];
+
+for (let i = 0; i < numberList.length; i++) {
+    let number = randomNumber(1, 50);
+    genNumber.push(number);  
+    numberList[i].innerText = number;
+}
+
+//const listNumber = randomNumber(1, 50, 5);
+//
+//for (let i = 0; i < listNumber.length; i++) {
+//    const numberForLi = document.createElement("li");
+//
+//    numberForLi.innerText = listNumber [i];
+//
+//    numberList.appendChild(numberForLi);
+//}
+
+//-- CREAZIONE DEL COUNTDOWN --//
 
 
 
