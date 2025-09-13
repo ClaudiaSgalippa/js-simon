@@ -32,7 +32,7 @@ const numberList = document.querySelectorAll("li");
 function randomNumber (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-console.log(randomNumber(0,50));
+//console.log(randomNumber(0,50));
 
 
 //-- CREIAMO UNA FUNZIONE CHE GENERI UN ARRAY DOVE INSERIRE I NUMERI RANDOM --//
@@ -53,7 +53,7 @@ function randomNumberArray (min, max, numX) {
     return numRandomArray;
 
 }
-console.log(randomNumber(1, 50, 5))
+//console.log(randomNumber(1, 50, 5))
 
 
 //-- CREIAMO UNA FUNZIONE PER INSERIRE I NUMERI RANDOM IN HTML --//
@@ -66,17 +66,22 @@ for (let i = 0; i < numberList.length; i++) {
     numberList[i].innerText = number;
 }
 
-//const listNumber = randomNumber(1, 50, 5);
-//
-//for (let i = 0; i < listNumber.length; i++) {
-//    const numberForLi = document.createElement("li");
-//
-//    numberForLi.innerText = listNumber [i];
-//
-//    numberList.appendChild(numberForLi);
-//}
 
 //-- CREAZIONE DEL COUNTDOWN --//
+
+let seconds = 30;
+countdown.innerText = seconds--;
+
+const interval = setInterval(function() {
+    if (seconds === 0) {
+        clearInterval(interval);
+        numberList.classList.add("d-none");
+        answerForm.classList.remove("d-none");
+
+    } else {
+        countdown.innerText = seconds--;
+    }
+}, 1000);
 
 
 
@@ -89,7 +94,7 @@ for (let i = 0; i < numberList.length; i++) {
         - assegnarla all'interno degli <li> presenti nell'html       
 
     2 - DA Lì PARTE UN TIMER DI 30 SECONDI:
-        - impostare setInterval per 30 secondi
+        - creare un countdown per 30 secondi 
 
     3 - DOPO 30 SECONDI I NUMERI SCOMPAIONO E APPAIONO INVECE 5 INPUT IN CUI L'UTENTE DEVE INSERIRE I NUMERI CHE HA VISTO PRECEDENTEMENTE, NELL'ORDINE CHE PREFERISCE
         - display.none del timer (?) 
