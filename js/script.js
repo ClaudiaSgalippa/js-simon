@@ -36,8 +36,8 @@ console.log(randomNumber(0,50));
 function randomNumberArray (min, max, numX) {
     let numRandomArray = [];
 
-    for (let i = 0; i < numX; i++) {
-        let newArray = numRandomArray (min, max);
+    while (numRandomArray < numX) {
+        const newArray = randomNumber(min, max);
 
         if (numRandomArray.includes(newArray)) {
             continue
@@ -49,6 +49,7 @@ function randomNumberArray (min, max, numX) {
     return numRandomArray;
 
 }
+console.log(randomNumber(1, 50, 5))
 
 
 
